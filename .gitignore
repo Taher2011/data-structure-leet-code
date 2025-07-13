@@ -6,6 +6,7 @@ bin/
 .classpath
 .project
 .settings/
+.factorypath
 =======
 # Compiled class file
 *.class
