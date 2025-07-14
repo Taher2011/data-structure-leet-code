@@ -57,9 +57,9 @@ public class BinarySearchTree {
 
 	public ArrayList<Integer> DFSPostOrder() {
 		ArrayList<Integer> results = new ArrayList<>();
-		results = traverse(root, results);
+		traverse(root, results);
 //		class Traverse {
-//			public Traverse(Node node) {
+//			private Traverse(Node node) {
 //				if (node.left != null) {
 //					new Traverse(node.left);
 //				}
