@@ -59,7 +59,7 @@ public class BinarySearchTree {
 		ArrayList<Integer> results = new ArrayList<>();
 		traverse(root, results);
 //		class Traverse {
-//			public Traverse(Node node) {
+//			private Traverse(Node node) {
 //				if (node.left != null) {
 //					new Traverse(node.left);
 //				}
