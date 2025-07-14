@@ -44,20 +44,21 @@ public class BinarySearchTree {
 		return rInsert(root, value);
 	}
 
-	public ArrayList<Integer> traverse(Node node, ArrayList<Integer> list) {
-		if (node.left != null) {
-			traverse(node.left, list);
-		}
-		list.add(node.value);
-		if (node.right != null) {
-			traverse(node.right, list);
-		}
-		return list;
-	}
-
 	public ArrayList<Integer> DFSInOrder() {
-		ArrayList<Integer> list = new ArrayList<>();
-		return traverse(root, list);
+		ArrayList<Integer> results = new ArrayList<>();
+		class Traverse {
+			private Traverse(Node node) {
+				if (node.left != null) {
+					new Traverse(node.left);
+				}
+				results.add(node.value);
+				if (node.right != null) {
+					new Traverse(node.right);
+				}
+			}
+		}
+		new Traverse(root);
+		return results;
 	}
 
 	public boolean isValidBST() {
@@ -79,6 +80,8 @@ public class BinarySearchTree {
 		bst.rInsert(27);
 		bst.rInsert(52);
 		bst.rInsert(82);
+		ArrayList<Integer> dfsInOrder = bst.DFSInOrder();
+		System.out.println(dfsInOrder);
 		System.out.println(bst.isValidBST());
 	}
 
