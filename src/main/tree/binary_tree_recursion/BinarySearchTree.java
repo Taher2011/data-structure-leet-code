@@ -1,5 +1,7 @@
 package binary_tree_recursion;
 
+import java.util.ArrayList;
+
 public class BinarySearchTree {
 
 	private Node root;
@@ -110,6 +112,23 @@ public class BinarySearchTree {
 		return node.value;
 	}
 
+	public ArrayList<Integer> DFSInOrder() {
+		ArrayList<Integer> results = new ArrayList<>();
+		class Traverse {
+			private Traverse(Node node) {
+				if (node.left != null) {
+					new Traverse(node.left);
+				}
+				results.add(node.value);
+				if (node.right != null) {
+					new Traverse(node.right);
+				}
+			}
+		}
+		new Traverse(root);
+		return results;
+	}
+
 	public static void main(String[] args) {
 		BinarySearchTree bst = new BinarySearchTree();
 		System.out.println(bst.rInsert(47));
@@ -120,9 +139,13 @@ public class BinarySearchTree {
 		System.out.println(bst.rInsert(33));
 		System.out.println(bst.rInsert(38));
 		System.out.println("============================");
+		System.out.println(bst.DFSInOrder());
+		System.out.println("============================");
 		System.out.println(bst.rContains(27));
 		bst.deleteNode(27);
 		System.out.println(bst.rContains(27));
+		System.out.println("============================");
+		System.out.println(bst.DFSInOrder());
 
 	}
 }
