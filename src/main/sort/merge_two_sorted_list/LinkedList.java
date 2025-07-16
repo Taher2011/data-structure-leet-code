@@ -201,34 +201,36 @@ public class LinkedList {
 	}
 
 	public void merge(LinkedList otherList) {
-		Node otherHead = otherList.getHead();
-		Node dummy = new Node(0);
-		Node temp = dummy;
-		while (head != null && otherHead != null) {
-			if (head.value < otherHead.value) {
+		if (head != null) {
+			Node otherHead = otherList.getHead();
+			Node dummy = new Node(0);
+			Node temp = dummy;
+			while (head != null && otherHead != null) {
+				if (head.value < otherHead.value) {
+					temp.next = head;
+					head = head.next;
+				} else {
+					temp.next = otherHead;
+					otherHead = otherHead.next;
+					length++;
+				}
+				temp = temp.next;
+			}
+			while (head != null) {
 				temp.next = head;
 				head = head.next;
-			} else {
+				temp = temp.next;
+			}
+			while (otherHead != null) {
 				temp.next = otherHead;
 				otherHead = otherHead.next;
+				temp = temp.next;
 				length++;
 			}
-			temp = temp.next;
+			head = dummy.next;
+			tail = temp;
+			display();
 		}
-		while (head != null) {
-			temp.next = head;
-			temp = temp.next;
-			head = head.next;
-		}
-		while (otherHead != null) {
-			temp.next = otherHead;
-			temp = temp.next;
-			otherHead = otherHead.next;
-			length++;
-		}
-		head = dummy.next;
-		tail = temp;
-		display();
 	}
 
 	public static void main(String[] args) {
