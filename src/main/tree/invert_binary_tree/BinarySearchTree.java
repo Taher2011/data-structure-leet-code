@@ -42,16 +42,13 @@ public class BinarySearchTree {
 	}
 
 	public Node invertTree(Node node) {
-		if (root != null) {
-			if (node == null) {
-				return null;
-			}
-			Node temp = node.left;
-			node.left = invertTree(node.right);
-			node.right = invertTree(temp);
-			return node;
+		if (node == null) {
+			return null;
 		}
-		return null;
+		Node temp = invertTree(node.left);
+		node.left = invertTree(node.right);
+		node.right = temp;
+		return node;
 	}
 
 	public static void main(String[] args) {
