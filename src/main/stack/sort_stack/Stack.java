@@ -80,16 +80,16 @@ public class Stack<T> {
 	}
 
 	public static void sortStack(Stack<Integer> stack) {
-		Stack<Integer> sortedStack = new Stack<>();
+		Stack<Integer> tempStack = new Stack<>();
 		while (!stack.isEmpty()) {
 			Integer pop = stack.pop();
-			while (!sortedStack.isEmpty() && sortedStack.peek() > pop) {
-				stack.push(sortedStack.pop());
+			while (!tempStack.isEmpty() && pop < tempStack.peek()) {
+				stack.push(tempStack.pop());
 			}
-			sortedStack.push(pop);
+			tempStack.push(pop);
 		}
-		while (!sortedStack.isEmpty()) {
-			stack.push(sortedStack.pop());
+		while (!tempStack.isEmpty()) {
+			stack.push(tempStack.pop());
 		}
 	}
 
