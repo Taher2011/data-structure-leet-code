@@ -17,6 +17,27 @@ public class MaxSubArray {
 		return 0;
 	}
 
+	// alternate approach
+//	public static int maxSubarray(int[] nums) {
+//		if (nums.length != 0) {
+//			int maxSum = nums[0];
+//			int currentSum = nums[0];
+//			for (int i = 1; i < nums.length; i++) {
+//				int totalOfCurrentAndPrevious = nums[i] + currentSum;
+//				if (nums[i] > totalOfCurrentAndPrevious) {
+//					currentSum = nums[i];
+//				} else {
+//					currentSum = totalOfCurrentAndPrevious;
+//				}
+//				if (currentSum > maxSum) {
+//					maxSum = currentSum;
+//				}
+//			}
+//			return maxSum;
+//		}
+//		return 0;
+//	}
+
 	public static void main(String[] args) {
 		// Example 1: Simple case with positive and negative numbers
 		int[] inputCase1 = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
