@@ -5,14 +5,16 @@ import java.util.Arrays;
 public class Rotate {
 
 	public static void rotate(int[] nums, int k) {
-		k = 3 % nums.length;
-		rotateArray(nums, 0, nums.length - 1);
-		rotateArray(nums, 0, k - 1);
-		rotateArray(nums, k, nums.length - 1);
+		k = k % nums.length;
+		int start = 0;
+		int end = nums.length - 1;
+		rotate(nums, start, end);
+		rotate(nums, start, k - 1);
+		rotate(nums, k, end);
 	}
 
-	public static void rotateArray(int[] nums, int start, int end) {
-		while (start < end) {
+	public static void rotate(int[] nums, int start, int end) {
+		while (start <= end) {
 			int temp = nums[start];
 			nums[start] = nums[end];
 			nums[end] = temp;
@@ -22,13 +24,32 @@ public class Rotate {
 	}
 
 	public static void main(String[] args) {
+
 		int[] nums1 = { 1, 2, 3, 4, 5, 6, 7 };
-		System.out.println(Arrays.toString(nums1));
-		int k = 3;
-		rotate(nums1, k);
-		System.out.println("Rotated array " + k + " times: " + Arrays.toString(nums1)); // prints "Rotated array: [5, 6,
-																						// 7, 1, 2, 3, 4]"
+		int k1 = 3;
+		rotate(nums1, k1);
+		System.out.println("Test case 1: Rotated array: " + Arrays.toString(nums1)); // prints "Rotated array: [5, 6, 7,
+																						// 1, 2, 3, 4]"
 
+		int[] nums2 = { -1, -100, 3, 99 };
+		int k2 = 2;
+		rotate(nums2, k2);
+		System.out.println("Test case 2: Rotated array: " + Arrays.toString(nums2)); // prints "Rotated array: [3, 99,
+																						// -1, -100]"
+
+		int[] nums3 = { 1, 2 };
+		int k3 = 3;
+		rotate(nums3, k3);
+		System.out.println("Test case 3: Rotated array: " + Arrays.toString(nums3)); // prints "Rotated array: [2, 1]"
+
+		int[] nums4 = { 1 };
+		int k4 = 0;
+		rotate(nums4, k4);
+		System.out.println("Test case 4: Rotated array: " + Arrays.toString(nums4)); // prints "Rotated array: [1]"
+
+		int[] nums5 = { 1, 2, 3, 4, 5, 6 };
+		int k5 = 6;
+		rotate(nums5, k5);
+		System.out.println("Test case 5: Rotated array: " + Arrays.toString(nums5)); // prints "Rotated array: [1, 2, 3,
 	}
-
 }
