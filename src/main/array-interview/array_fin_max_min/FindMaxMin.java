@@ -8,11 +8,8 @@ public class FindMaxMin {
 		int max = nums[0];
 		int min = nums[0];
 		for (int num : nums) {
-			if (num > max) {
-				max = num;
-			} else if (num < min) {
-				min = num;
-			}
+			max = Math.max(num, max);
+			min = Math.min(num, min);
 		}
 		return new int[] { max, min };
 	}
