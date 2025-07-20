@@ -238,6 +238,9 @@ public class LinkedList {
 		LinkedList ll = new LinkedList();
 		ll.append(1);
 		ll.append(2);
+		ll.append(3);
+		ll.append(4);
+		ll.append(5);
 		Node middleNode = ll.findMiddleNode();
 		if (middleNode != null) {
 			System.out.println("middleNode " + middleNode.value);
