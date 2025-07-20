@@ -260,13 +260,13 @@ public class LinkedList {
 		l1.append(3);
 		l1.append(5);
 		l1.append(7);
-		l1.append(10);
+		l1.append(9);
 
 		LinkedList l2 = new LinkedList();
 		l2.append(4);
 		l2.append(6);
 		l2.append(8);
-		l2.append(9);
+		l2.append(10);
 
 		l1.merge(l2);
 	}
