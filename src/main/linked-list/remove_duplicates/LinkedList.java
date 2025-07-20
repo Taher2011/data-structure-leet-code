@@ -226,7 +226,7 @@ public class LinkedList {
 			Node current = head;
 			while (current != null) {
 				Node runner = current;
-				while (runner.next != null) {
+				while (runner != null && runner.next != null) {
 					if (current.value == runner.next.value) {
 						runner.next = runner.next.next;
 						length--;
@@ -246,10 +246,13 @@ public class LinkedList {
 	public static void main(String[] args) {
 		LinkedList ll = new LinkedList();
 		ll.append(1);
+		ll.append(1);
+		ll.append(1);
+		ll.append(1);
+		ll.append(1);
 		ll.append(2);
-		ll.append(3);
-		ll.append(4);
 		ll.append(2);
+		ll.append(1);
 		ll.removeDuplicates();
 	}
 
