@@ -227,7 +227,7 @@ public class LinkedList {
 		ll.append(2);
 		ll.append(3);
 		ll.append(4);
-		ll.reverse();
+		ll.append(5);
 	}
 
 }
