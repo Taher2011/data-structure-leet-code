@@ -158,23 +158,6 @@ public class LinkedList {
 		return current;
 	}
 
-	public void reverse() {
-		if (head != null) {
-			Node temp = head;
-			head = tail;
-			tail = temp;
-			Node before = null;
-			Node after = null;
-			while (temp != null) {
-				after = temp.next;
-				temp.next = before;
-				before = temp;
-				temp = after;
-			}
-			display();
-		}
-	}
-
 	private void display() {
 		print();
 		getLength();
@@ -221,12 +204,29 @@ public class LinkedList {
 		tempNode = null;
 	}
 
+	public void reverse() {
+		if (head != null) {
+			Node temp = head;
+			head = tail;
+			tail = temp;
+			Node before = null;
+			while (temp != null) {
+				Node after = temp.next;
+				temp.next = before;
+				before = temp;
+				temp = after;
+			}
+			display();
+		}
+	}
+
 	public static void main(String[] args) {
 		LinkedList ll = new LinkedList();
 		ll.append(1);
 		ll.append(2);
 		ll.append(3);
 		ll.append(4);
+		ll.append(5);
 		ll.reverse();
 	}
 
