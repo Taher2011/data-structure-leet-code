@@ -223,34 +223,37 @@ public class LinkedList {
 
 	public void partitionList(int x) {
 		if (head != null) {
-			Node temp = head;
 			Node dummy1 = new Node(0);
 			Node dummy2 = new Node(0);
-			Node part1 = dummy1;
-			Node part2 = dummy2;
+			Node partition1 = dummy1;
+			Node partition2 = dummy2;
+			Node temp = head;
 			while (temp != null) {
 				if (temp.value < x) {
-					part1.next = new Node(temp.value);
-					part1 = part1.next;
+					partition1.next = new Node(temp.value);
+					partition1 = partition1.next;
 				} else {
-					part2.next = new Node(temp.value);
-					part2 = part2.next;
+					partition2.next = new Node(temp.value);
+					partition2 = partition2.next;
 				}
 				temp = temp.next;
 			}
-			part1.next = dummy2.next;
+			partition1.next = dummy2.next;
 			head = dummy1.next;
-			tail = part2;
+			tail = partition2;
+			display();
 		}
 	}
 
 	public static void main(String[] args) {
 		LinkedList ll = new LinkedList();
-		ll.append(5);
 		ll.append(3);
+		ll.append(8);
+		ll.append(5);
+		ll.append(10);
 		ll.append(2);
-		ll.append(4);
 		ll.append(1);
+		ll.append(4);
 		ll.partitionList(4);
 	}
 
