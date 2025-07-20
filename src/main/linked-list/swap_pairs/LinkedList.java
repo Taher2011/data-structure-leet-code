@@ -222,25 +222,23 @@ public class LinkedList {
 	}
 
 	public void swapPairs() {
-		if (head != null) {
-			Node dummy = new Node(0);
-			dummy.next = head;
-			Node prev = dummy;
-			Node first = prev.next;
-			while (first != null && first.next != null) {
-				Node second = first.next;
-				prev.next = second;
-				first.next = second.next;
-				second.next = first;
-				prev = first;
-				if (prev.next == null) {
-					tail = prev;
-				}
-				first = prev.next;
+		Node dummy = new Node(0);
+		dummy.next = head;
+		Node prev = dummy;
+		Node first = prev.next;
+		while (first != null && first.next != null) {
+			Node second = first.next;
+			prev.next = second;
+			first.next = second.next;
+			second.next = first;
+			prev = first;
+			first = prev.next;
+			if (first == null) {
+				tail = prev;
 			}
-			head = dummy.next;
-			display();
 		}
+		head = dummy.next;
+		display();
 	}
 
 	public static void main(String[] args) {
@@ -249,6 +247,10 @@ public class LinkedList {
 		ll.append(2);
 		ll.append(3);
 		ll.append(4);
+		ll.append(5);
+		ll.append(6);
+		ll.append(7);
+		ll.append(8);
 		ll.swapPairs();
 	}
 
