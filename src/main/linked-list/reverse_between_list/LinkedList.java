@@ -225,17 +225,17 @@ public class LinkedList {
 		if (head != null) {
 			Node dummy = new Node(0);
 			dummy.next = head;
-			Node prev = dummy;
+			Node previous = dummy;
 			for (int i = 0; i < startIndex; i++) {
-				prev = prev.next;
+				previous = previous.next;
 			}
-			Node current = prev.next;
+			Node current = previous.next;
 			int iteration = endIndex - startIndex;
 			for (int i = 0; i < iteration; i++) {
 				Node nodeToMove = current.next;
 				current.next = nodeToMove.next;
-				nodeToMove.next = prev.next;
-				prev.next = nodeToMove;
+				nodeToMove.next = previous.next;
+				previous.next = nodeToMove;
 			}
 			head = dummy.next;
 			Node temp = head;
@@ -254,6 +254,7 @@ public class LinkedList {
 		ll.append(3);
 		ll.append(4);
 		ll.append(5);
+		ll.append(6);
 		ll.reverseBetween(2, 4);
 	}
 
