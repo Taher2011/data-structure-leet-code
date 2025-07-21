@@ -4,50 +4,44 @@ public class ReverseString {
 
 	public static String reverseString(String string) {
 		char[] ch = string.toCharArray();
-		StringBuilder reverseString = new StringBuilder();
+		StringBuilder sb = new StringBuilder();
 		for (int i = ch.length - 1; i >= 0; i--) {
-			reverseString.append(ch[i]);
+			sb.append(ch[i]);
 		}
-		return new String(reverseString);
+		return new String(sb);
 	}
 
 	public static String reverseEachWordInString(String sentence) {
 		String[] words = sentence.split(" ");
-		StringBuilder reverseString = new StringBuilder();
+		StringBuilder sb = new StringBuilder();
 		for (String word : words) {
-			char[] ch = word.toCharArray();
-			for (int j = ch.length - 1; j >= 0; j--) {
-				reverseString.append(ch[j]);
-			}
-			reverseString.append(" ");
+			sb.append(reverseString(word) + " ");
 		}
-		return new String(reverseString).trim();
+		return new String(sb).trim();
 	}
 
 	public static String reverseSentence(String sentence) {
 		String[] words = sentence.split(" ");
-		StringBuilder reverseString = new StringBuilder();
+		StringBuilder sb = new StringBuilder();
 		for (int i = words.length - 1; i >= 0; i--) {
-			reverseString.append(words[i] + " ");
+			sb.append(words[i] + " ");
 		}
-		return new String(reverseString).trim();
+		return new String(sb).trim();
 	}
 
 	public static void main(String[] args) {
 
-		String string = "Taher";
+		String string = "Indore";
 		String reverseString = reverseString(string);
-		System.out.println("reverse of originalString '" + string + "' is '" + reverseString + "'");
+		System.out.println("reverse of string '" + string + "' is ---> '" + reverseString + "'");
 
-		string = "Taher is good employee";
-		reverseString = reverseString(string);
-		System.out.println("reverse of originalString '" + string + "' is '" + reverseString + "'");
+		string = "Indore is the cleanest city";
+		String reverseEachWordInString = reverseEachWordInString(string);
+		System.out.println(
+				"reverse of each words in the sentence '" + string + "' is ---> '" + reverseEachWordInString + "'");
 
-		String reverseEachWordInString = reverseEachWordInString(reverseString);
-		System.out.println("reverse of originalString '" + reverseString + "' is '" + reverseEachWordInString + "'");
-
-		String reverseSentence = reverseSentence(reverseEachWordInString);
-		System.out.println("reverse of originalString '" + reverseEachWordInString + "' is '" + reverseSentence + "'");
+		String reverseSentence = reverseSentence(string);
+		System.out.println("reverse of sentence '" + string + "' is ---> '" + reverseSentence + "'");
 	}
 
 }
