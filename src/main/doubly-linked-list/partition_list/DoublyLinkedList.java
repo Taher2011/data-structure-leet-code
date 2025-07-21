@@ -209,41 +209,44 @@ public class DoublyLinkedList {
 		if (head != null) {
 			Node dummy1 = new Node(0);
 			Node dummy2 = new Node(0);
-			Node part1 = dummy1;
-			Node part2 = dummy2;
-			Node current = head;
-			while (current != null) {
-				Node node = new Node(current.value);
-				if (current.value < x) {
-					part1.next = node;
-					node.prev = part1;
-					part1 = node;
+			Node partition1 = dummy1;
+			Node partition2 = dummy2;
+			Node temp = head;
+			while (temp != null) {
+				Node node = new Node(temp.value);
+				if (temp.value < x) {
+					partition1.next = node;
+					node.prev = partition1;
+					partition1 = partition1.next;
 				} else {
-					part2.next = node;
-					node.prev = part2;
-					part2 = node;
+					partition2.next = node;
+					node.prev = partition2;
+					partition2 = partition2.next;
 				}
-				current = current.next;
+				temp = temp.next;
 			}
-			part1.next = dummy2.next;
+			partition1.next = dummy2.next;
 			if (dummy2.next != null) {
-				dummy2.next.prev = part1;
+				dummy2.next.prev = partition1;
 			}
 			head = dummy1.next;
 			head.prev = null;
+			if (partition2.value != 0 && partition2.next == null) {
+				tail = partition2;
+			}
 			display();
 		}
 	}
 
 	public static void main(String[] args) {
 		DoublyLinkedList ddl = new DoublyLinkedList();
-		ddl.append(1);
-		ddl.append(11);
-		ddl.append(2);
 		ddl.append(3);
-		ddl.append(6);
-		ddl.append(9);
-		ddl.partitionList(9);
+		ddl.append(8);
+		ddl.append(5);
+		ddl.append(10);
+		ddl.append(2);
+		ddl.append(1);
+		ddl.partitionList(5);
 	}
 
 }
