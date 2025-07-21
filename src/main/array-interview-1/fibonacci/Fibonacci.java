@@ -14,7 +14,7 @@ public class Fibonacci {
 			return;
 		}
 		System.out.print(n1 + "," + n2);
-		while (count != 2) {
+		while (count > 2) {
 			int n3 = n1 + n2;
 			System.out.print("," + n3);
 			n1 = n2;
@@ -24,7 +24,7 @@ public class Fibonacci {
 	}
 
 	public static void main(String[] args) {
-		fibonacci(0);
+		fibonacci(7);
 	}
 
 }
