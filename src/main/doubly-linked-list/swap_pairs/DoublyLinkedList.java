@@ -213,19 +213,23 @@ public class DoublyLinkedList {
 			Node first = previous.next;
 			while (first != null && first.next != null) {
 				Node second = first.next;
+
 				previous.next = second;
 				second.prev = previous;
+
 				first.next = second.next;
 				if (second.next != null) {
 					second.next.prev = first;
 				}
+
 				second.next = first;
 				first.prev = second;
+
 				previous = first;
-				first = previous.next;
-				tail = previous;
-				if (first != null) {
-					tail = first;
+				first = first.next;
+
+				if (first == null) {
+					tail = previous;
 				}
 			}
 			head = dummy.next;
@@ -241,8 +245,6 @@ public class DoublyLinkedList {
 		ddl.append(3);
 		ddl.append(4);
 		ddl.append(5);
-		ddl.append(6);
-		ddl.append(7);
 		ddl.swapPairs();
 	}
 
