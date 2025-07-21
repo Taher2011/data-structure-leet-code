@@ -206,25 +206,24 @@ public class DoublyLinkedList {
 	}
 
 	public boolean isPalindrome() {
-		if (head != null) {
-			int middle = length / 2;
-			for (int i = 0; i < middle; i++) {
-				if (head.value != tail.value) {
-					return false;
-				}
-				head = head.next;
-				tail = tail.prev;
+		int middle = length / 2;
+		for (int i = 0; i < middle; i++) {
+			if (head.value != tail.value) {
+				return false;
 			}
+			head = head.next;
+			tail = tail.prev;
 		}
 		return true;
 	}
 
 	public static void main(String[] args) {
 		DoublyLinkedList dll = new DoublyLinkedList();
+		dll.append(3);
 		dll.append(1);
 		dll.append(2);
-		dll.append(2);
 		dll.append(1);
+		dll.append(3);
 		System.out.println("doubly linked list is palindrome " + dll.isPalindrome());
 	}
 
