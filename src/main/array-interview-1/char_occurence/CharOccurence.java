@@ -38,6 +38,10 @@ public class CharOccurence {
 	}
 
 	public static void characterOccurrences(String str) {
+		if (str == null || str.isBlank()) {
+			System.out.println("string can not be null or empty");
+			return;
+		}
 		String unique = removeDupilcates1(str);
 		char[] ch1 = unique.toCharArray();
 		char[] ch2 = str.toCharArray();
@@ -82,7 +86,7 @@ public class CharOccurence {
 	}
 
 	public static void main(String[] args) {
-		characterOccurrences("malayalam");
+		characterOccurrences(null);
 		System.out.println("=============================");
 		String string = "this is chair and this is table";
 		stringOccurrence(string);
