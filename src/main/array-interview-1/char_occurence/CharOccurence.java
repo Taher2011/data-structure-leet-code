@@ -23,6 +23,20 @@ public class CharOccurence {
 		return new String(Arrays.copyOfRange(ch, 0, writer));
 	}
 
+	// alternative approach for removing duplicates occurences
+	public static String removeDupilcates1(String str) {
+		char[] ch = str.toCharArray();
+		StringBuilder sb = new StringBuilder();
+		boolean[] seen = new boolean[256];
+		for (int i = 0; i < ch.length; i++) {
+			if (!seen[ch[i]]) {
+				seen[ch[i]] = true;
+				sb.append(ch[i]);
+			}
+		}
+		return new String(sb);
+	}
+
 	public static void characterOccurrences(String str) {
 		String unique = removeDupilcates1(str);
 		char[] ch1 = unique.toCharArray();
@@ -38,21 +52,7 @@ public class CharOccurence {
 		}
 	}
 
-	public static String removeDupilcates1(String str) {
-		char[] ch = str.toCharArray();
-		StringBuilder sb = new StringBuilder();
-		boolean[] seen = new boolean[256];
-		boolean[] read = new boolean[256];
-		for (int i = 0; i < ch.length; i++) {
-			if (!seen[ch[i]]) {
-				seen[ch[i]] = true;
-				sb.append(ch[i]);
-			}
-		}
-		return new String(sb);
-	}
-
-	public static void stringOccurence(String string) {
+	public static void stringOccurrence(String string) {
 		String[] words = string.split(" ");
 		int writer = 1;
 		for (int reader = 1; reader < words.length; reader++) {
@@ -85,6 +85,6 @@ public class CharOccurence {
 		characterOccurrences("malayalam");
 		System.out.println("=============================");
 		String string = "this is chair and this is table";
-		stringOccurence(string);
+		stringOccurrence(string);
 	}
 }
