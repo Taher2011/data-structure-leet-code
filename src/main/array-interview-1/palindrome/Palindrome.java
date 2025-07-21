@@ -3,8 +3,9 @@ package palindrome;
 public class Palindrome {
 
 	public static boolean isPalindrome(String str) {
-		for (int i = 0, j = str.toCharArray().length - 1; i < str.length() / 2; i++, j--) {
-			if (str.charAt(i) != str.charAt(j)) {
+		char[] ch = str.toCharArray();
+		for (int i = 0, j = ch.length - 1; i < ch.length / 2; i++, j--) {
+			if (ch[i] != ch[j]) {
 				return false;
 			}
 		}
@@ -12,7 +13,7 @@ public class Palindrome {
 	}
 
 	public static void main(String[] args) {
-		String str = "mayayalam";
+		String str = "malayalam";
 		if (isPalindrome(str)) {
 			System.out.println(str + " is palindrome");
 		} else {
