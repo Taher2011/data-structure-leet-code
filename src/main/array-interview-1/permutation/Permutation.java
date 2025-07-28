@@ -53,9 +53,9 @@ public class Permutation {
 			if (i > index && a[i] == a[i - 1]) {
 				continue;
 			}
-			swap(a, index, i);
+			swap(a, i, index);
 			permute(a, index + 1);
-			swap(a, index, i); // Backtrack
+			swap(a, i, index); // Backtrack
 		}
 	}
 
