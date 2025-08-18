@@ -1,6 +1,6 @@
 package swap_pairs;
 
-public class LinkedList {
+public class LinkedList2 {
 
 	private Node head;
 	private Node tail;
@@ -222,36 +222,35 @@ public class LinkedList {
 	}
 
 	public void swapPairs() {
-		if (head != null) {
-			Node dummy = new Node(0);
-			dummy.next = head;
-			head = dummy;
-			Node prev = head;
-			Node first = prev.next;
-			while (first != null && first.next != null) {
-				Node second = first.next;
-				prev.next = second;
-				first.next = second.next;
-				second.next = first;
-				prev = first;
-				first = prev.next;
-				if (first == null) {
-					tail = prev;
-				}
+		Node dummy = new Node(0);
+		dummy.next = head;
+		Node prev = dummy;
+		Node first = prev.next;
+		while (first != null && first.next != null) {
+			Node second = first.next;
+			prev.next = second;
+			first.next = second.next;
+			second.next = first;
+			prev = first;
+			first = prev.next;
+			if (first == null) {
+				tail = prev;
 			}
-			head = dummy.next;
-			display();
 		}
+		head = dummy.next;
+		display();
 	}
 
 	public static void main(String[] args) {
-		LinkedList ll = new LinkedList();
+		LinkedList2 ll = new LinkedList2();
 		ll.append(1);
 		ll.append(2);
 		ll.append(3);
 		ll.append(4);
 		ll.append(5);
 		ll.append(6);
+		ll.append(7);
+		ll.append(8);
 		ll.swapPairs();
 	}
 
