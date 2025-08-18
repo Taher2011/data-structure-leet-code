@@ -225,17 +225,18 @@ public class LinkedList {
 		if (head != null) {
 			Node dummy = new Node(0);
 			dummy.next = head;
-			Node previous = dummy;
+			head = dummy;
+			Node prev = head;
 			for (int i = 0; i < startIndex; i++) {
-				previous = previous.next;
+				prev = prev.next;
 			}
-			Node current = previous.next;
+			Node current = prev.next;
 			int iteration = endIndex - startIndex;
 			for (int i = 0; i < iteration; i++) {
 				Node nodeToMove = current.next;
 				current.next = nodeToMove.next;
-				nodeToMove.next = previous.next;
-				previous.next = nodeToMove;
+				nodeToMove.next = prev.next;
+				prev.next = nodeToMove;
 			}
 			head = dummy.next;
 			Node temp = head;
