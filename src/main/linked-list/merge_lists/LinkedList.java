@@ -225,7 +225,9 @@ public class LinkedList {
 		if (head != null) {
 			Node dummy = new Node(0);
 			Node temp = dummy;
+
 			Node otherHead = otherList.getHead();
+
 			while (head != null && otherHead != null) {
 				if (head.value < otherHead.value) {
 					temp.next = head;
@@ -237,17 +239,20 @@ public class LinkedList {
 				}
 				temp = temp.next;
 			}
+
 			while (head != null) {
 				temp.next = head;
 				head = head.next;
 				temp = temp.next;
 			}
+
 			while (otherHead != null) {
 				temp.next = otherHead;
 				otherHead = otherHead.next;
 				temp = temp.next;
 				length++;
 			}
+
 			tail = temp;
 			head = dummy.next;
 			display();
