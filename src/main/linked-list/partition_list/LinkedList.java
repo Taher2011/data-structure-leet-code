@@ -225,9 +225,12 @@ public class LinkedList {
 		if (head != null) {
 			Node dummy1 = new Node(0);
 			Node dummy2 = new Node(0);
+
 			Node partition1 = dummy1;
 			Node partition2 = dummy2;
+
 			Node temp = head;
+
 			while (temp != null) {
 				if (temp.value < x) {
 					partition1.next = new Node(temp.value);
