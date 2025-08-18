@@ -85,7 +85,7 @@ public class LinkedList {
 	}
 
 	public Node get(int index) {
-		if (index >= length || index < 0) {
+		if (index < 0 || index >= length) {
 			return null;
 		}
 		Node temp = head;
@@ -96,7 +96,7 @@ public class LinkedList {
 	}
 
 	public boolean set(int index, int value) {
-		if (index >= length || index < 0) {
+		if (index < 0 || index >= length) {
 			return false;
 		}
 		Node temp = head;
@@ -109,7 +109,7 @@ public class LinkedList {
 	}
 
 	public boolean insert(int index, int value) {
-		if (index > length || index < 0) {
+		if (index < 0 || index > length) {
 			return false;
 		}
 		if (index == 0) {
@@ -136,7 +136,7 @@ public class LinkedList {
 	}
 
 	public Node remove(int index) {
-		if (index >= length || index < 0) {
+		if (index < 0 || index >= length) {
 			return null;
 		}
 		if (index == 0) {
