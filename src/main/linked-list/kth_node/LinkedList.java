@@ -223,21 +223,17 @@ public class LinkedList {
 
 	public Node findKthFromEnd(int k) {
 		if (head != null) {
-			Node fast = head;
-			Node slow = fast;
-			int counter = 0;
+			Node temp = head;
+			Node slow = temp;
+			Node fast = temp;
 			if (k <= 0) {
 				return null;
 			}
 			for (int i = 0; i < k; i++) {
 				if (fast == null) {
-					break;
+					return null;
 				}
 				fast = fast.next;
-				counter++;
-			}
-			if (k > counter) {
-				return null;
 			}
 			while (fast != null) {
 				slow = slow.next;
@@ -255,7 +251,7 @@ public class LinkedList {
 		ll.append(3);
 		ll.append(4);
 		ll.append(5);
-		int k = 1;
+		int k = 0;
 		Node kthNode = ll.findKthFromEnd(k);
 		if (kthNode != null) {
 			System.out.println(k + "th node from end is " + kthNode.value);
