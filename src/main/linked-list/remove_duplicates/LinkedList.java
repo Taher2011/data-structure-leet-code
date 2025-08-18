@@ -222,25 +222,23 @@ public class LinkedList {
 	}
 
 	public void removeDuplicates() {
-		if (head != null) {
-			Node current = head;
-			while (current != null) {
-				Node runner = current;
-				while (runner != null && runner.next != null) {
-					if (current.value == runner.next.value) {
-						runner.next = runner.next.next;
-						length--;
-					} else {
-						runner = runner.next;
-					}
+		Node current = head;
+		while (current != null) {
+			Node runner = current;
+			while (runner.next != null) {
+				if (current.value == runner.next.value) {
+					runner.next = runner.next.next;
+					length--;
+				} else {
+					runner = runner.next;
 				}
-				if (current.next == null) {
-					tail = current;
-				}
-				current = current.next;
 			}
-			display();
+			if (current.next == null) {
+				tail = current;
+			}
+			current = current.next;
 		}
+		display();
 	}
 
 	public static void main(String[] args) {
@@ -248,11 +246,11 @@ public class LinkedList {
 		ll.append(1);
 		ll.append(1);
 		ll.append(1);
-		ll.append(1);
-		ll.append(1);
 		ll.append(2);
 		ll.append(2);
 		ll.append(1);
+		ll.append(1);
+		ll.append(3);
 		ll.removeDuplicates();
 	}
 
