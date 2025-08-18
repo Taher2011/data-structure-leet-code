@@ -243,7 +243,7 @@ public class LinkedList {
 		ll.append(5);
 		Node middleNode = ll.findMiddleNode();
 		if (middleNode != null) {
-			System.out.println("middleNode " + middleNode.value);
+			System.out.println("middleNode is " + middleNode.value);
 		}
 	}
 
