@@ -209,30 +209,38 @@ public class DoublyLinkedList {
 		if (head != null) {
 			Node dummy = new Node(0);
 			dummy.next = head;
+			head.prev = dummy;
+
 			Node previous = dummy;
 			for (int i = 0; i < startIndex; i++) {
 				previous = previous.next;
 			}
-			int iteration = endIndex - startIndex;
+
 			Node current = previous.next;
+			int iteration = endIndex - startIndex;
 			for (int i = 0; i < iteration; i++) {
 				Node nodeToMove = current.next;
+
 				current.next = nodeToMove.next;
 				if (nodeToMove.next != null) {
 					nodeToMove.next.prev = current;
 				}
-				nodeToMove.next = previous.next;
-				previous.next.prev = nodeToMove;
 
-				previous.next = nodeToMove;
 				nodeToMove.prev = previous;
+				nodeToMove.next = previous.next;
+
+				previous.next.prev = nodeToMove;
+				previous.next = nodeToMove;
+
 			}
 			head = dummy.next;
 			head.prev = null;
+
 			Node temp = head;
 			while (temp.next != null) {
-				tail = temp;
+				temp = temp.next;
 			}
+			tail = temp;
 			display();
 		}
 	}
@@ -244,7 +252,10 @@ public class DoublyLinkedList {
 		ddl.append(3);
 		ddl.append(4);
 		ddl.append(5);
-		ddl.reverseBetween(2, 4);
+		ddl.append(6);
+		ddl.append(7);
+		ddl.append(8);
+		ddl.reverseBetween(2, 6);
 	}
 
 }
