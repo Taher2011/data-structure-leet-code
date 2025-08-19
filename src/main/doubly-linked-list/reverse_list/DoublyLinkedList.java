@@ -210,16 +210,17 @@ public class DoublyLinkedList {
 			Node temp = head;
 			head = tail;
 			tail = temp;
-			Node before = new Node(0);
+
+			Node before = null;
+			Node after = null;
+
 			while (temp != null) {
-				Node after = temp.next;
+				after = temp.next;
 				temp.next = before;
-				before.prev = temp;
+				temp.prev = after;
 				before = temp;
 				temp = after;
 			}
-			head.prev = null;
-			tail.next = null;
 			display();
 		}
 	}
