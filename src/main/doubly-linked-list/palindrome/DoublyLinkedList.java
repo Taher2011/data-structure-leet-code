@@ -206,13 +206,15 @@ public class DoublyLinkedList {
 	}
 
 	public boolean isPalindrome() {
+		Node temp1 = head;
+		Node temp2 = tail;
 		int middle = length / 2;
 		for (int i = 0; i < middle; i++) {
-			if (head.value != tail.value) {
+			if (temp1.value != temp2.value) {
 				return false;
 			}
-			head = head.next;
-			tail = tail.prev;
+			temp1 = temp1.next;
+			temp2 = temp2.prev;
 		}
 		return true;
 	}
