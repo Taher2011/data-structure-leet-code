@@ -6,7 +6,7 @@ public class DoublyLinkedList {
 	private Node tail;
 	private int length;
 
-	class Node {
+	private class Node {
 		private int value;
 		private Node next;
 		private Node prev;
@@ -14,20 +14,6 @@ public class DoublyLinkedList {
 		public Node(int value) {
 			this.value = value;
 		}
-	}
-
-	public void prepend(int value) {
-		Node node = new Node(value);
-		if (head == null) {
-			head = tail = node;
-			length++;
-			return;
-		}
-		node.next = head;
-		head.prev = node;
-		head = node;
-		length++;
-		display();
 	}
 
 	public void append(int value) {
@@ -43,41 +29,58 @@ public class DoublyLinkedList {
 		display();
 	}
 
-	public Node removeFirst() {
-		if (length == 0) {
-			return null;
-		}
-		if (length == 1) {
-			Node temp = head;
-			head = tail = null;
-			length--;
+	public void prepend(int value) {
+		Node node = new Node(value);
+		if (head == null) {
+			head = tail = node;
+			length++;
 			display();
-			return temp;
+			return;
 		}
-		Node temp = head;
-		head = head.next;
-		head.prev = null;
-		temp.next = null;
-		length--;
+		head.prev = node;
+		node.next = head;
+		head = node;
+		length++;
 		display();
-		return temp;
 	}
 
 	public Node removeLast() {
+		Node temp = head;
 		if (length == 0) {
 			return null;
 		}
 		if (length == 1) {
-			Node temp = head;
+			removeFirst();
+			return temp;
+		}
+		Node previous = temp;
+		Node current = temp;
+		while (current.next != null) {
+			previous = current;
+			current = current.next;
+		}
+		previous.next = null;
+		current.prev = null;
+		tail = previous;
+		length--;
+		display();
+		return current;
+	}
+
+	public Node removeFirst() {
+		Node temp = head;
+		if (length == 0) {
+			return null;
+		}
+		if (length == 1) {
 			head = tail = null;
 			length--;
 			display();
 			return temp;
 		}
-		Node temp = tail;
-		tail = tail.prev;
-		tail.next = null;
-		temp.prev = null;
+		head = head.next;
+		temp.next = null;
+		head.prev = null;
 		length--;
 		display();
 		return temp;
@@ -119,17 +122,19 @@ public class DoublyLinkedList {
 			append(value);
 			return true;
 		}
-		Node prev = head;
-		Node node = new Node(value);
+		Node previous = head;
 		Node current = head;
+		Node node = new Node(value);
 		for (int i = 0; i < index; i++) {
-			prev = current;
+			previous = current;
 			current = current.next;
 		}
-		prev.next = node;
-		node.prev = prev;
+		previous.next = node;
+		node.prev = previous;
+
 		node.next = current;
 		current.prev = node;
+
 		length++;
 		display();
 		return true;
@@ -139,29 +144,27 @@ public class DoublyLinkedList {
 		if (index < 0 || index >= length) {
 			return null;
 		}
-		Node temp = null;
 		if (index == 0) {
-			temp = removeFirst();
-			return temp;
+			return removeFirst();
 		}
 		if (index == length - 1) {
-			temp = removeLast();
-			return temp;
+			return removeLast();
 		}
-		Node prev = head;
+		Node previous = head;
 		Node current = head;
 		for (int i = 0; i < index; i++) {
-			prev = current;
+			previous = current;
 			current = current.next;
 		}
-		temp = current;
-		prev.next = current.next;
-		current.next.prev = prev;
-		temp.next = null;
-		temp.prev = null;
+		previous.next = current.next;
+		current.next.prev = previous;
+
+		current.next = null;
+		current.prev = null;
+
 		length--;
 		display();
-		return temp;
+		return current;
 	}
 
 	private void display() {
@@ -216,5 +219,6 @@ public class DoublyLinkedList {
 		dll.append(2);
 		dll.append(3);
 		dll.append(4);
+		dll.append(5);
 	}
 }
