@@ -226,21 +226,22 @@ public class DoublyLinkedList {
 	}
 
 	// alternative approach
-//	public void reverse() {
-//		if (head != null) {
-//			Node current = head;
-//			while (current != null) {
-//				Node temp = current.next;
-//				current.next = current.prev;
-//				current.prev = temp;
-//				current = current.prev;
-//			}
-//			Node temp = head;
-//			head = tail;
-//			tail = temp;
-//			display();
-//		}
-//	}
+	public void reverse1() {
+		if (head != null) {
+			Node current = head;
+			while (current != null) {
+				Node nextNode = current.next;
+				Node temp = current.next;
+				current.next = current.prev;
+				current.prev = temp;
+				current = nextNode;
+			}
+			Node temp = head;
+			head = tail;
+			tail = temp;
+			display();
+		}
+	}
 
 	public static void main(String[] args) {
 		DoublyLinkedList ddl = new DoublyLinkedList();
@@ -249,7 +250,7 @@ public class DoublyLinkedList {
 		ddl.append(3);
 		ddl.append(4);
 		ddl.append(5);
-		ddl.reverse();
+		ddl.reverse1();
 	}
 
 }
