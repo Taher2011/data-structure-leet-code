@@ -209,9 +209,12 @@ public class DoublyLinkedList {
 		if (head != null) {
 			Node dummy1 = new Node(0);
 			Node dummy2 = new Node(0);
+
 			Node partition1 = dummy1;
 			Node partition2 = dummy2;
+
 			Node temp = head;
+
 			while (temp != null) {
 				Node node = new Node(temp.value);
 				if (temp.value < x) {
@@ -225,15 +228,18 @@ public class DoublyLinkedList {
 				}
 				temp = temp.next;
 			}
+
 			partition1.next = dummy2.next;
 			if (dummy2.next != null) {
 				dummy2.next.prev = partition1;
 			}
-			head = dummy1.next;
-			head.prev = null;
-			if (partition2.value != 0 && partition2.next == null) {
+
+			if (partition2.value != 0) {
 				tail = partition2;
 			}
+
+			head = dummy1.next;
+			head.prev = null;
 			display();
 		}
 	}
@@ -247,6 +253,18 @@ public class DoublyLinkedList {
 		ddl.append(2);
 		ddl.append(1);
 		ddl.partitionList(5);
+
+//		DoublyLinkedList ddl1 = new DoublyLinkedList();
+//		ddl1.append(1);
+//		ddl1.append(2);
+//		ddl1.append(3);
+//		ddl1.partitionList(5);
+
+//		DoublyLinkedList ddl2 = new DoublyLinkedList();
+//		ddl2.append(6);
+//		ddl2.append(7);
+//		ddl2.append(8);
+//		ddl2.partitionList(5);
 	}
 
 }
