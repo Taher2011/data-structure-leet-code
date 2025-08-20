@@ -4,48 +4,47 @@ import java.util.Stack;
 
 public class Queue {
 
-	private Stack<Integer> stack1;
-	private Stack<Integer> stack2;
+	private Stack<Integer> stack;
 
 	public Queue() {
-		stack1 = new Stack<>();
-		stack2 = new Stack<>();
-	}
-
-	public boolean isEmpty() {
-		return stack1.isEmpty();
+		stack = new Stack<>();
 	}
 
 	public void enqueue(int value) {
-		while (!stack1.isEmpty()) {
-			stack2.push(stack1.pop());
+		Stack<Integer> tempStack = new Stack<>();
+		while (!stack.isEmpty()) {
+			tempStack.push(stack.pop());
 		}
-		stack1.push(value);
-		while (!stack2.isEmpty()) {
-			stack1.push(stack2.pop());
+		stack.push(value);
+		while (!tempStack.isEmpty()) {
+			stack.push(tempStack.pop());
 		}
-	}
-
-	public Integer peek() {
-		if (stack1.isEmpty()) {
-			return null;
-		}
-		return stack1.peek();
 	}
 
 	public Integer dequeue() {
-		if (stack1.isEmpty()) {
-			return null;
+		if (!stack.isEmpty()) {
+			return stack.pop();
 		}
-		return stack1.pop();
+		return null;
 	}
 
-	public int size() {
-		return stack1.size();
+	public Integer peek() {
+		if (!stack.isEmpty()) {
+			return stack.peek();
+		}
+		return null;
 	}
 
-	public Stack<Integer> getStack1() {
-		return stack1;
+	public void getQueue() {
+		Stack<Integer> stack1 = (Stack<Integer>) stack.clone(); // deep copy
+		System.out.print("[");
+		while (!stack1.isEmpty()) {
+			System.out.print(stack1.pop());
+			if (!stack1.isEmpty()) { // last element ke baad comma mat lagao
+				System.out.print(",");
+			}
+		}
+		System.out.println("]");
 	}
 
 	public static void main(String[] args) {
@@ -55,20 +54,12 @@ public class Queue {
 		q.enqueue(3);
 		q.enqueue(4);
 		q.enqueue(5);
-		System.out.println(q.getStack1());
+
+		q.getQueue();
 
 		q.dequeue();
-		System.out.println(q.getStack1());
-		q.dequeue();
-		System.out.println(q.getStack1());
-		q.dequeue();
-		System.out.println(q.getStack1());
-		q.dequeue();
-		System.out.println(q.getStack1());
-		q.dequeue();
-		System.out.println(q.getStack1());
-		System.out.println(q.peek());
-		q.dequeue();
-		System.out.println(q.getStack1());
+
+		q.getQueue();
 	}
+
 }
