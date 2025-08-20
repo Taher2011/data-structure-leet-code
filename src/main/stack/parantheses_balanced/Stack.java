@@ -85,10 +85,7 @@ public class Stack<T> {
 		for (char c : ch) {
 			if (c == '(') {
 				st.push(c);
-			} else if (c == ')') {
-				if (st.isEmpty()) {
-					return false;
-				}
+			} else if (c == ')' && !st.isEmpty()) {
 				st.pop();
 			} else {
 				return false;
