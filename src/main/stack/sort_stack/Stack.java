@@ -83,7 +83,7 @@ public class Stack<T> {
 		Stack<Integer> tempStack = new Stack<>();
 		while (!stack.isEmpty()) {
 			Integer pop = stack.pop();
-			while (!tempStack.isEmpty() && pop < tempStack.peek()) {
+			while (!tempStack.isEmpty() && tempStack.peek() > pop) {
 				stack.push(tempStack.pop());
 			}
 			tempStack.push(pop);
