@@ -5,7 +5,7 @@ public class Stack {
 	private Node top;
 	private int height;
 
-	class Node {
+	private class Node {
 		private int value;
 		private Node next;
 
@@ -29,21 +29,22 @@ public class Stack {
 	}
 
 	public Node pop() {
-		if (top == null) {
-			return null;
+		if (top != null) {
+			Node temp = top;
+			top = top.next;
+			temp.next = null;
+			height--;
+			display();
+			return temp;
 		}
-		Node temp = top;
-		top = top.next;
-		height--;
-		display();
-		return temp;
+		return null;
 	}
 
 	public Node peek() {
-		if (top == null) {
-			return null;
+		if (top != null) {
+			return top;
 		}
-		return top;
+		return null;
 	}
 
 	public boolean isEmpty() {
