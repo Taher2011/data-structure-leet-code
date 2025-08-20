@@ -80,15 +80,16 @@ public class Stack<T> {
 	}
 
 	public static String reverseString(String string) {
+		StringBuilder reverseString = new StringBuilder();
 		Stack<Character> st = new Stack<>();
-		for (char c : string.toCharArray()) {
-			st.push(c);
+		char[] ch = string.toCharArray();
+		for (int i = 0; i < ch.length; i++) {
+			st.push(ch[i]);
 		}
-		StringBuilder reverseStr = new StringBuilder();
 		while (!st.isEmpty()) {
-			reverseStr.append(st.pop());
+			reverseString.append(st.pop());
 		}
-		return reverseStr.toString();
+		return reverseString.toString();
 	}
 
 	public static void main(String[] args) {
