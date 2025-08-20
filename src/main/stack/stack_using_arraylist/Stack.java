@@ -5,44 +5,47 @@ import java.util.List;
 
 public class Stack<T> {
 
-	private ArrayList<T> stackList;
+	private List<T> list;
 
 	public Stack() {
-		this.stackList = new ArrayList<>();
+		this.list = new ArrayList<>();
+	}
+
+	private void getList() {
+		System.out.print("[");
+		for (int i = list.size() - 1; i >= 0; i--) {
+			System.out.print(list.get(i));
+			if (i != 0) {
+				System.out.print(",");
+			}
+		}
+		System.out.println("]");
 	}
 
 	public void push(T value) {
-		stackList.add(value);
+		list.add(value);
 	}
 
 	public T pop() {
-		if (stackList.isEmpty()) {
-			return null;
-		}
-		return stackList.remove(size() - 1);
-	}
-
-	public List<T> getStackList() {
-		List<T> list = new ArrayList<>();
-		for (int i = size() - 1; i >= 0; i--) {
-			list.add(stackList.get(i));
-		}
-		return new ArrayList<>(list);
-	}
-
-	public int size() {
-		return stackList.size();
-	}
-
-	public T peek() {
-		if (!stackList.isEmpty()) {
-			return stackList.get(size() - 1);
+		if (!isEmpty()) {
+			return list.remove(list.size() - 1);
 		}
 		return null;
 	}
 
+	public T peek() {
+		if (!isEmpty()) {
+			return list.get(list.size() - 1);
+		}
+		return null;
+	}
+
+	public int size() {
+		return list.size();
+	}
+
 	public boolean isEmpty() {
-		return stackList.isEmpty();
+		return size() == 0;
 	}
 
 	public static void main(String[] args) {
@@ -50,9 +53,8 @@ public class Stack<T> {
 		st.push(1);
 		st.push(2);
 		st.push(3);
-		System.out.println(st.getStackList());
-		System.out.println(st.peek());
+		st.getList();
 		System.out.println(st.pop());
-		System.out.println(st.getStackList());
+		st.getList();
 	}
 }
