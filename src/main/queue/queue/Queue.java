@@ -6,21 +6,13 @@ public class Queue {
 	private Node last;
 	private int length;
 
-	class Node {
+	private class Node {
 		private int value;
 		private Node next;
 
 		public Node(int value) {
 			this.value = value;
 		}
-	}
-
-	public boolean isEmpty() {
-		return length == 0;
-	}
-
-	public int size() {
-		return length;
 	}
 
 	public void enqueue(int value) {
@@ -49,8 +41,8 @@ public class Queue {
 			return temp;
 		}
 		first = first.next;
-		length--;
 		temp.next = null;
+		length--;
 		display();
 		return temp;
 	}
@@ -103,12 +95,10 @@ public class Queue {
 	public static void main(String[] args) {
 		Queue q = new Queue();
 		q.enqueue(1);
-//		q.enqueue(2);
-//		q.enqueue(3);
-//		q.enqueue(4);
-//		q.dequeue();
-//		q.dequeue();
-//		q.dequeue();
+		q.enqueue(2);
+		q.enqueue(3);
+		q.dequeue();
+		q.dequeue();
 		q.dequeue();
 	}
 }
