@@ -71,10 +71,10 @@ public class Stack<T> {
 		st.push(1);
 		st.push(2);
 		st.push(3);
-		System.out.println("value at top is " + st.peek().value);
+		// System.out.println("value at top is " + st.peek().value);
 		System.out.println("========================================================");
 		st.pop();
-		System.out.println("value at top is " + st.peek().value);
+		// System.out.println("value at top is " + st.peek().value);
 		System.out.println("========================================================");
 	}
 }
