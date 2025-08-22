@@ -1,4 +1,4 @@
-package validate_BST;
+package is_validate_BST;
 
 import java.util.ArrayList;
 import java.util.List;
