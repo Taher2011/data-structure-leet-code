@@ -79,8 +79,8 @@ public class BinarySearchTree {
 		bst.rInsert(76);
 		bst.rInsert(18);
 		bst.rInsert(27);
-		bst.rInsert(52);
 		bst.rInsert(82);
+		bst.rInsert(52);
 		System.out.print(bst.DFSInOrder());
 		System.out.println(" is valid BST -> " + bst.isValidBST());
 	}
