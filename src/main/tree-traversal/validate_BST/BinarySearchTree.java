@@ -1,6 +1,7 @@
 package validate_BST;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BinarySearchTree {
 
@@ -44,10 +45,10 @@ public class BinarySearchTree {
 		return rInsert(root, value);
 	}
 
-	public ArrayList<Integer> DFSInOrder() {
-		ArrayList<Integer> results = new ArrayList<>();
+	public List<Integer> DFSInOrder() {
+		List<Integer> results = new ArrayList<>();
 		class Traverse {
-			private Traverse(Node node) {
+			public Traverse(Node node) {
 				if (node.left != null) {
 					new Traverse(node.left);
 				}
@@ -62,9 +63,9 @@ public class BinarySearchTree {
 	}
 
 	public boolean isValidBST() {
-		ArrayList<Integer> list = DFSInOrder();
-		for (int i = 1; i < list.size(); i++) {
-			if (list.get(i) < list.get(i - 1)) {
+		List<Integer> results = DFSInOrder();
+		for (int i = 1; i < results.size(); i++) {
+			if (results.get(i) < results.get(i - 1)) {
 				return false;
 			}
 		}
@@ -80,9 +81,8 @@ public class BinarySearchTree {
 		bst.rInsert(27);
 		bst.rInsert(52);
 		bst.rInsert(82);
-		ArrayList<Integer> dfsInOrder = bst.DFSInOrder();
-		System.out.println(dfsInOrder);
-		System.out.println(bst.isValidBST());
+		System.out.print(bst.DFSInOrder());
+		System.out.println(" is valid BST -> " + bst.isValidBST());
 	}
 
 }
