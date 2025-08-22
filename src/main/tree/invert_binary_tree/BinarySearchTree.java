@@ -45,9 +45,9 @@ public class BinarySearchTree {
 		if (node == null) {
 			return null;
 		}
-		Node temp = invertTree(node.left);
+		Node temp = node.left;
 		node.left = invertTree(node.right);
-		node.right = temp;
+		node.right = invertTree(temp);
 		return node;
 	}
 
