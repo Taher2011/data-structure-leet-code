@@ -78,7 +78,6 @@ public class BinarySearchTree {
 			if (poppedNode.right != null) {
 				current = poppedNode.right;
 			}
-
 		}
 		return null;
 	}
@@ -94,7 +93,7 @@ public class BinarySearchTree {
 		bst.rInsert(8);
 		System.out.println(bst.DFSInOrder());
 		System.out.println();
-		int kth = 6;
+		int kth = 4 ;
 		System.out.println(kth + "th smallest element is " + bst.kthSmallest(kth));
 	}
 
