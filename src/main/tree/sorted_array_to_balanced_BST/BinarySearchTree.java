@@ -1,6 +1,7 @@
 package sorted_array_to_balanced_BST;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BinarySearchTree {
 
@@ -16,8 +17,8 @@ public class BinarySearchTree {
 		}
 	}
 
-	public ArrayList<Integer> DFSInOrder() {
-		ArrayList<Integer> results = new ArrayList<>();
+	public List<Integer> DFSInOrder() {
+		List<Integer> results = new ArrayList<>();
 		class Traverse {
 			private Traverse(Node node) {
 				if (node.left != null) {
@@ -44,14 +45,10 @@ public class BinarySearchTree {
 		return node;
 	}
 
-	public Node sortedArrayToBST(int[] nums) {
-		return sortedArrayToBST(nums, 0, nums.length - 1);
-	}
-
 	public static void main(String[] args) {
 		BinarySearchTree bst = new BinarySearchTree();
 		int[] nums = { 1, 2, 3, 4, 5 };
-		bst.root = bst.sortedArrayToBST(nums);
+		bst.root = bst.sortedArrayToBST(nums, 0, nums.length - 1);
 		System.out.println(bst.DFSInOrder());
 	}
 }
