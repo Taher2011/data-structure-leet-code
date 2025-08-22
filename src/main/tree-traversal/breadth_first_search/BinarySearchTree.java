@@ -2,6 +2,7 @@ package breadth_first_search;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class BinarySearchTree {
@@ -46,8 +47,8 @@ public class BinarySearchTree {
 		return rInsert(root, value);
 	}
 
-	public ArrayList<Integer> BFS() {
-		ArrayList<Integer> results = new ArrayList<>();
+	public List<Integer> BFS() {
+		List<Integer> results = new ArrayList<>();
 		Queue<Node> queue = new LinkedList<>();
 		queue.add(root);
 		while (!queue.isEmpty()) {
@@ -65,12 +66,12 @@ public class BinarySearchTree {
 
 	public static void main(String[] args) {
 		BinarySearchTree bst = new BinarySearchTree();
-		bst.rInsert(47);
 		bst.rInsert(21);
 		bst.rInsert(76);
 		bst.rInsert(18);
 		bst.rInsert(27);
 		bst.rInsert(52);
+		bst.rInsert(47);
 		bst.rInsert(82);
 		System.out.println(bst.BFS());
 	}
