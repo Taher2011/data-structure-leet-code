@@ -1,6 +1,7 @@
 package depth_first_search_pre_order;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BinarySearchTree {
 
@@ -44,7 +45,7 @@ public class BinarySearchTree {
 		return rInsert(root, value);
 	}
 
-	public ArrayList<Integer> traverse(Node node, ArrayList<Integer> results) {
+	public List<Integer> traverse(Node node, List<Integer> results) {
 		results.add(node.value);
 		if (node.left != null) {
 			traverse(node.left, results);
@@ -55,21 +56,21 @@ public class BinarySearchTree {
 		return results;
 	}
 
-	public ArrayList<Integer> DFSPreOrder() {
-		ArrayList<Integer> results = new ArrayList<>();
-		traverse(root, results);
-//		class Traverse {
-//			private Traverse(Node node) {
-//				results.add(node.value);
-//				if (node.left != null) {
-//					new Traverse(node.left);
-//				}
-//				if (node.right != null) {
-//					new Traverse(node.right);
-//				}
-//			}
-//		}
-//		new Traverse(root);
+	public List<Integer> DFSPreOrder() {
+		List<Integer> results = new ArrayList<>();
+		class Traverse {
+			public Traverse(Node node) {
+				results.add(node.value);
+				if (node.left != null) {
+					new Traverse(node.left);
+				}
+				if (node.right != null) {
+					new Traverse(node.right);
+				}
+			}
+		}
+		new Traverse(root);
+		// traverse(root, results);
 		return results;
 	}
 
