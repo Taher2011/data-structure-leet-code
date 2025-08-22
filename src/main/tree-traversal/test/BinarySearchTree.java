@@ -50,5 +50,4 @@ public class BinarySearchTree {
 		bst.rInsert(82);
 		System.out.println(bst.BFS());
 	}
-
 }
