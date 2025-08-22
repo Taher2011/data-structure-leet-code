@@ -1,6 +1,5 @@
 package test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BinarySearchTree {
@@ -36,8 +35,15 @@ public class BinarySearchTree {
 	}
 
 	public List<Integer> DFSInOrder() {
-		List<Integer> results = new ArrayList<>();
-		return results;
+		return null;
+	}
+
+	public Node invertTree(Node node) {
+		return null;
+	}
+
+	public Node sortedArrayToBST(int[] nums, int left, int right) {
+		return null;
 	}
 
 	public static void main(String[] args) {
