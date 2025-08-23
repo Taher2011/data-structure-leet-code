@@ -16,111 +16,64 @@ public class Heap {
 	}
 
 	public int leftChild(int index) {
-		return index * 2 + 1;
+		return (index * 2) + 1;
 	}
 
 	public int rightChild(int index) {
-		return index * 2 + 2;
+		return (index * 2) + 2;
 	}
 
 	public int parent(int index) {
-		return (index - 1) / 2;
+		int parentIndex = (index - 1) / 2;
+		return parentIndex;
 	}
 
-	public void swap(int currentIndex, int parentIndex) {
-		int temp = heap.get(currentIndex);
-		heap.set(currentIndex, heap.get(parent(currentIndex)));
-		heap.set(parentIndex, temp);
+	public void swap(int index1, int index2) {
+		int temp = heap.get(index2);
+		heap.set(index2, heap.get(index1));
+		heap.set(index1, temp);
 	}
 
 	public void insert(int value) {
+		if (heap.isEmpty()) {
+			heap.add(value);
+			return;
+		}
 		heap.add(value);
 		int currentIndex = heap.size() - 1;
-		while (currentIndex > 0 && heap.get(currentIndex) > heap.get(parent(currentIndex))) {
+		while (currentIndex != 0 && heap.get(currentIndex) > heap.get(parent(currentIndex))) {
 			swap(currentIndex, parent(currentIndex));
 			currentIndex = parent(currentIndex);
 		}
 	}
 
 	public Integer remove() {
-		if (heap.isEmpty()) {
-			return null;
+		if (!heap.isEmpty()) {
+			if (heap.size() == 1) {
+				return heap.remove(0);
+			}
+			int removedValue = heap.get(0);
+			int lastValue = heap.remove(heap.size() - 1);
+			heap.set(0, lastValue);
+			sinkDown(0);
+			return removedValue;
 		}
-		if (heap.size() == 1) {
-			return heap.remove(0);
-		}
-		int removed = heap.get(0);
-		int last = heap.remove(heap.size() - 1);
-		heap.set(0, last);
-		sinkDown(0);
-		return removed;
+		return null;
 	}
 
 	public void sinkDown(int index) {
 		int maxIndex = index;
 		while (true) {
-			int leftChildIndex = leftChild(maxIndex);
-			int rightChildIndex = rightChild(maxIndex);
-
-			if (leftChildIndex < heap.size() && heap.get(leftChildIndex) > heap.get(maxIndex)) {
-				maxIndex = leftChildIndex;
+			int leftChild = leftChild(maxIndex);
+			int rightChild = rightChild(maxIndex);
+			if (leftChild < heap.size() && heap.get(maxIndex) < heap.get(leftChild)) {
+				maxIndex = leftChild;
 			}
-
-			if (rightChildIndex < heap.size() && heap.get(rightChildIndex) > heap.get(maxIndex)) {
-				maxIndex = rightChildIndex;
+			if (rightChild < heap.size() && heap.get(maxIndex) < heap.get(rightChild)) {
+				maxIndex = rightChild;
 			}
 			if (index != maxIndex) {
 				swap(maxIndex, index);
-				index = maxIndex;
-			} else {
-				break;
-			}
-		}
-	}
-
-	public List<Integer> heapSort() {
-		List<Integer> heap1 = new ArrayList<>(heap);
-		int size = heap1.size();
-		while (size > 0) {
-			int removed = heap1.get(0);
-			int last = heap1.get(size - 1);
-			heap1.set(0, last);
-			heap1.set(size - 1, removed);
-			sinkDown(0, size - 1, heap1);
-			size--;
-		}
-		return heap1;
-
-//		// Step 1: Repeatedly remove max and place at end
-//				List<Integer> sorted = new ArrayList<>();
-//				while (!heap.isEmpty()) {
-//					sorted.add(0, remove()); // Remove max and add to sorted list
-//				}
-//				// Update heap with sorted list
-//				heap = sorted;
-	}
-
-	public void swap(int currentIndex, int parentIndex, List<Integer> heap) {
-		int temp = heap.get(currentIndex);
-		heap.set(currentIndex, heap.get(parent(currentIndex)));
-		heap.set(parentIndex, temp);
-	}
-
-	public void sinkDown(int index, int size, List<Integer> heap) {
-		int maxIndex = index;
-		while (true) {
-			int leftChildIndex = leftChild(maxIndex);
-			int rightChildIndex = rightChild(maxIndex);
-
-			if (leftChildIndex < size && heap.get(leftChildIndex) > heap.get(maxIndex)) {
-				maxIndex = leftChildIndex;
-			}
-
-			if (rightChildIndex < size && heap.get(rightChildIndex) > heap.get(maxIndex)) {
-				maxIndex = rightChildIndex;
-			}
-			if (index != maxIndex) {
-				swap(maxIndex, index, heap);
 				index = maxIndex;
 			} else {
 				break;
@@ -138,13 +91,17 @@ public class Heap {
 		heap.insert(95);
 		heap.insert(64);
 		System.out.println(heap.getHeap());
+
+		System.out.println("==============================");
 		heap.remove();
 		System.out.println(heap.getHeap());
-		List<Integer> heapSort = heap.heapSort();
-		System.out.println(heapSort);
+
+		System.out.println("==============================");
 		heap.remove();
 		System.out.println(heap.getHeap());
-		heapSort = heap.heapSort();
-		System.out.println(heapSort);
+
+		System.out.println("==============================");
+
 	}
+
 }
