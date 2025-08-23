@@ -73,8 +73,9 @@ public class Heap {
 		}
 	}
 
-	public static int findKthSmallest(int[] nums, int k) {
-		Heap heap = new Heap();
+	// Alternate approach
+	public static int findKthSmallest1(int[] nums, int k) {
+		Heap2 heap = new Heap2();
 		for (int num : nums) {
 			heap.insert(num);
 			if (heap.getHeap().size() > k) {
@@ -85,9 +86,29 @@ public class Heap {
 		return kthSmallest;
 	}
 
+	public static int findKthSmallest(int[] nums, int k) {
+		// Edge cases
+		if (nums == null || nums.length == 0 || k <= 0 || k > nums.length) {
+			throw new IllegalArgumentException("Invalid input");
+		}
+		Heap heap = new Heap();
+		for (int num : nums) {
+			if (k != 0) {
+				heap.insert(num);
+				k--;
+				continue;
+			}
+			if (num < heap.getHeap().get(0)) {
+				heap.remove();
+				heap.insert(num);
+			}
+		}
+		return heap.getHeap().get(0);
+	}
+
 	public static void main(String[] args) {
-		int[] nums = { 9, 3, 2, 11, 7, 10, 4, 5 };
-		int k = 5;
+		int[] nums = { 9, 2, 3 };
+		int k = 3;
 		System.out.println(k + "th smallest element is " + findKthSmallest(nums, k));
 	}
 }
