@@ -107,8 +107,8 @@ public class Heap {
 	}
 
 	public static void main(String[] args) {
-		int[] nums = { 9, 2, 3 };
-		int k = 3;
+		int[] nums = { 9, 3, 2, 11, 7, 10, 4, 5 };
+		int k = 5;
 		System.out.println(k + "th smallest element is " + findKthSmallest(nums, k));
 	}
 }
