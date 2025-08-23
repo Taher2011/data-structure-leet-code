@@ -74,6 +74,10 @@ public class Heap {
 	}
 
 	public static List<Integer> streamMax(int[] nums) {
+		// Edge case
+		if (nums == null || nums.length == 0) {
+			return new ArrayList<>();
+		}
 		Heap heap = new Heap();
 		List<Integer> list = new ArrayList<>();
 		for (int num : nums) {
