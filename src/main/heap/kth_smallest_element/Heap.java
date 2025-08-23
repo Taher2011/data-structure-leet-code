@@ -75,7 +75,7 @@ public class Heap {
 
 	// Alternate approach
 	public static int findKthSmallest1(int[] nums, int k) {
-		Heap2 heap = new Heap2();
+		Heap heap = new Heap();
 		for (int num : nums) {
 			heap.insert(num);
 			if (heap.getHeap().size() > k) {
