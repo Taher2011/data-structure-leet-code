@@ -9,24 +9,21 @@ public class MergeSort {
 		int index = 0;
 		int i = 0;
 		int j = 0;
-		while (i < a1.length && j < a2.length) {
+		while (a1.length > i && a2.length > j) {
 			if (a1[i] < a2[j]) {
-				a3[index] = a1[i];
+				a3[index++] = a1[i];
 				i++;
 			} else {
-				a3[index] = a2[j];
+				a3[index++] = a2[j];
 				j++;
 			}
-			index++;
 		}
-		while (i < a1.length) {
-			a3[index] = a1[i];
-			index++;
+		while (a1.length > i) {
+			a3[index++] = a1[i];
 			i++;
 		}
-		while (j < a2.length) {
-			a3[index] = a2[j];
-			index++;
+		while (a2.length > j) {
+			a3[index++] = a2[j];
 			j++;
 		}
 		return a3;
