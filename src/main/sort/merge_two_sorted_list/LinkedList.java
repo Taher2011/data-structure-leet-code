@@ -246,6 +246,7 @@ public class LinkedList {
 		l2.append(6);
 		l2.append(8);
 		l2.append(9);
+		l2.append(11);
 
 		l1.merge(l2);
 	}
