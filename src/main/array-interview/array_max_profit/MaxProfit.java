@@ -4,33 +4,35 @@ public class MaxProfit {
 
 	public static int maxProfit(int[] prices) {
 		int maxProfit = 0;
-		int buyPrice = prices[0];
-		for (int price : prices) {
-			buyPrice = Math.min(buyPrice, price);
-			int profit = price - buyPrice;
-			maxProfit = Math.max(maxProfit, profit);
+		if (prices.length != 0) {
+			int buyPrice = prices[0];
+			for (int price : prices) {
+				buyPrice = Math.min(price, buyPrice);
+				int profit = price - buyPrice;
+				maxProfit = Math.max(profit, maxProfit);
+			}
 		}
 		return maxProfit;
 	}
 
 	// alternate approach
-//	public static int maxProfit(int[] prices) {
-//		if (prices.length == 0) {
-//			return 0;
-//		}
-//		int maxProfit = 0;
-//		int buyPrice = prices[0];
-//		for (int price : prices) {
-//			if (price < buyPrice) {
-//				buyPrice = price;
-//			}
-//			int profit = price - buyPrice;
-//			if (profit > maxProfit) {
-//				maxProfit = profit;
-//			}
-//		}
-//		return maxProfit;
-//	}
+	public static int maxProfit1(int[] prices) {
+		int maxProfit = 0;
+		if (prices.length != 0) {
+			int buyPrice = prices[0];
+			for (int price : prices) {
+				if (price < buyPrice) {
+					buyPrice = price;
+					continue;
+				}
+				int profit = price - buyPrice;
+				if (profit > maxProfit) {
+					maxProfit = profit;
+				}
+			}
+		}
+		return maxProfit;
+	}
 
 	public static void main(String[] args) {
 		int[] prices1 = { 7, 1, 5, 3, 6, 4 };
