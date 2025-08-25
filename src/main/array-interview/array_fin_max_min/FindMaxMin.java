@@ -5,13 +5,33 @@ import java.util.Arrays;
 public class FindMaxMin {
 
 	public static int[] findMaxMin(int[] nums) {
-		int max = nums[0];
-		int min = nums[0];
-		for (int num : nums) {
-			max = Math.max(num, max);
-			min = Math.min(num, min);
+		if (nums.length != 0) {
+			int max = nums[0];
+			int min = nums[0];
+			for (int num : nums) {
+				min = Math.min(num, min);
+				max = Math.max(num, max);
+			}
+			return new int[] { max, min };
 		}
-		return new int[] { max, min };
+		return new int[] { 0, 0 };
+	}
+
+	// alternate approach
+	public static int[] findMaxMin1(int[] nums) {
+		if (nums.length != 0) {
+			int max = nums[0];
+			int min = nums[0];
+			for (int num : nums) {
+				if (num < min) {
+					min = num;
+				} else if (num > max) {
+					max = num;
+				}
+			}
+			return new int[] { max, min };
+		}
+		return new int[] { 0, 0 };
 	}
 
 	public static void main(String[] args) {
