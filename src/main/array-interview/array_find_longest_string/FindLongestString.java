@@ -3,13 +3,16 @@ package array_find_longest_string;
 public class FindLongestString {
 
 	public static String findLongestString(String[] strings) {
-		String longestString = "";
-		for (String string : strings) {
-			if (string.length() > longestString.length()) {
-				longestString = string;
+		if (strings.length != 0) {
+			String longestStr = strings[0];
+			for (String string : strings) {
+				if (longestStr.length() < string.length()) {
+					longestStr = string;
+				}
 			}
+			return longestStr;
 		}
-		return longestString;
+		return "";
 	}
 
 	public static void main(String[] args) {
