@@ -8,8 +8,7 @@ public class RemoveElement {
 		int writer = 0;
 		for (int reader = 0; reader < nums.length; reader++) {
 			if (val != nums[reader]) {
-				nums[writer] = nums[reader];
-				writer++;
+				nums[writer++] = nums[reader];
 			}
 		}
 		return writer;
