@@ -1,3 +1,5 @@
+Array: Max Profit ( ** Interview Question)
+
 You are tasked with implementing a method, maxProfit that takes an array of integers representing the price of a given stock on different days.
 
 The method should determine the maximum profit that can be made by buying and selling the stock once. Note that you must buy before you can sell.
