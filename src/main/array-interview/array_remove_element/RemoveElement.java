@@ -5,13 +5,16 @@ import java.util.Arrays;
 public class RemoveElement {
 
 	public static int removeElement(int[] nums, int val) {
-		int writer = 0;
-		for (int reader = 0; reader < nums.length; reader++) {
-			if (val != nums[reader]) {
-				nums[writer++] = nums[reader];
+		if (nums.length != 0) {
+			int writer = 0;
+			for (int reader = 0; reader < nums.length; reader++) {
+				if (val != nums[reader]) {
+					nums[writer++] = nums[reader];
+				}
 			}
+			return writer;
 		}
-		return writer;
+		return 0;
 	}
 
 	public static void main(String[] args) {
