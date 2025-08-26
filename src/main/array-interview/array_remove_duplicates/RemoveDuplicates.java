@@ -4,12 +4,12 @@ import java.util.Arrays;
 
 public class RemoveDuplicates {
 
-	public static int removeDuplicatesFromSortedArray(int[] nums) {
+	public static int removeDuplicates(int[] nums) {
 		if (nums.length != 0) {
 			int writer = 1;
-			for (int reader = 1; reader < nums.length; reader++) {
-				if (nums[reader] != nums[reader - 1]) {
-					nums[writer] = nums[reader];
+			for (int reader = 0; reader < nums.length - 1; reader++) {
+				if (nums[reader] != nums[reader + 1]) {
+					nums[writer] = nums[reader + 1];
 					writer++;
 				}
 			}
@@ -24,7 +24,7 @@ public class RemoveDuplicates {
 			for (int reader = 1; reader < nums.length; reader++) {
 				boolean isDuplicate = false;
 				for (int i = 0; i < reader; i++) {
-					if (nums[i] == nums[reader]) {
+					if (nums[reader] == nums[i]) {
 						isDuplicate = true;
 						break;
 					}
@@ -48,25 +48,25 @@ public class RemoveDuplicates {
 
 		int[] nums2 = { 1, 1, 2, 2, 2, 3 };
 		System.out.println(Arrays.toString(Arrays.copyOfRange(nums2, 0, nums2.length)));
-		int newLength2 = removeDuplicatesFromSortedArray(nums2);
+		int newLength2 = removeDuplicates(nums2);
 		System.out.println(Arrays.toString(Arrays.copyOfRange(nums2, 0, newLength2)));
 		System.out.println("=====================================================");
 
 		int[] nums3 = { -1, 0, 0, 0, 3, 3 };
 		System.out.println(Arrays.toString(Arrays.copyOfRange(nums3, 0, nums3.length)));
-		int newLength3 = removeDuplicatesFromSortedArray(nums3);
+		int newLength3 = removeDuplicates(nums3);
 		System.out.println(Arrays.toString(Arrays.copyOfRange(nums3, 0, newLength3)));
 		System.out.println("=====================================================");
 
 		int[] nums4 = {};
 		System.out.println(Arrays.toString(Arrays.copyOfRange(nums4, 0, nums4.length)));
-		int newLength4 = removeDuplicatesFromSortedArray(nums4);
+		int newLength4 = removeDuplicates(nums4);
 		System.out.println(Arrays.toString(Arrays.copyOfRange(nums4, 0, newLength4)));
 		System.out.println("=====================================================");
 
 		int[] nums5 = { 1, 1, 1, 1, 1 };
 		System.out.println(Arrays.toString(Arrays.copyOfRange(nums5, 0, nums5.length)));
-		int newLength5 = removeDuplicatesFromSortedArray(nums5);
+		int newLength5 = removeDuplicates(nums5);
 		System.out.println(Arrays.toString(Arrays.copyOfRange(nums5, 0, newLength5)));
 		System.out.println("=====================================================");
 
@@ -81,6 +81,15 @@ public class RemoveDuplicates {
 		System.out.println(Arrays.toString(nums7));
 		int length1 = removeDuplicatesFromUnsortedArray(nums7);
 		System.out.println(Arrays.toString(Arrays.copyOfRange(nums7, 0, length1)));
+
+		System.out.println("=====================================================");
+
+		int[] nums8 = { 1, 2, 3, 4, 5 };
+		System.out.println(Arrays.toString(Arrays.copyOfRange(nums8, 0, nums8.length)));
+		int newLength8 = removeDuplicates(nums8);
+		System.out.println(Arrays.toString(Arrays.copyOfRange(nums8, 0, newLength8)));
+		System.out.println("=====================================================");
+
 	}
 
 }
