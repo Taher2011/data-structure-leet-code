@@ -40,7 +40,7 @@ public class RemoveDuplicates {
 	}
 
 	public static void main(String[] args) {
-		Integer[] nums1 = { 5, 1, 4, 7, 5, 1, 4, 2, 2, 7, 5, 4 };
+		Integer[] nums1 = { 5, 1, 4, 7, 5, 1, 4, 0, 2, 2, 7, 5, 4 };
 		System.out.println(Arrays.toString(Arrays.copyOfRange(nums1, 0, nums1.length)));
 		int newLength1 = removeDuplicatesFromUnsortedArray(nums1);
 		System.out.println(Arrays.toString(Arrays.copyOfRange(nums1, 0, newLength1)));
