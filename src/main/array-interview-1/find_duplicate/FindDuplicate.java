@@ -24,7 +24,7 @@ public class FindDuplicate {
 	}
 
 	public static void main(String[] args) {
-		String str = "india";
+		String str = "malayalam";
 		String duplicates = findDuplicates(str);
 		if (duplicates == null) {
 			System.out.println("string cannot be null");
