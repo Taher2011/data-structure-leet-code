@@ -3,46 +3,55 @@ package first_non_repeating_char;
 public class FindFirstNonRepChar {
 
 	public static String findDuplicates(String str) {
-		char[] ch = str.toCharArray();
-		StringBuilder builder = new StringBuilder();
-		boolean[] read = new boolean[256];
-		boolean[] write = new boolean[256];
-		for (int i = 0; i < ch.length; i++) {
-			if (!read[ch[i]]) {
-				read[ch[i]] = true;
-			} else {
-				if (!write[ch[i]]) {
-					builder.append(ch[i]);
-					write[ch[i]] = true;
+		if (str != null && !str.isBlank()) {
+			boolean[] write = new boolean[256];
+			boolean[] read = new boolean[256];
+			StringBuilder builder = new StringBuilder();
+			char[] ch = str.toCharArray();
+			for (char c : ch) {
+				if (read[c]) {
+					if (!write[c]) {
+						builder.append(c);
+						write[c] = true;
+					}
+				} else {
+					read[c] = true;
 				}
 			}
+			return builder.toString();
 		}
-		return new String(builder);
+		return null;
 	}
 
 	public static String findFirstNonRepChar(String str) {
-		String duplicates = findDuplicates(str);
-		char[] ch1 = str.toCharArray();
-		char[] ch2 = duplicates.toCharArray();
-		for (int i = 0; i < ch1.length; i++) {
-			int counter = 0;
-			for (int j = 0; j < ch2.length; j++) {
-				if (ch1[i] == ch2[j]) {
-					counter++;
-					break;
+		if (str != null && !str.trim().isBlank()) {
+			String duplicates = findDuplicates(str);
+			char[] ch1 = str.toCharArray();
+			char[] ch2 = duplicates.toCharArray();
+			for (int i = 0; i < ch1.length; i++) {
+				boolean nonReapting = false;
+				for (int j = 0; j < ch2.length; j++) {
+					if (ch1[i] == ch2[j]) {
+						nonReapting = true;
+						break;
+					}
+				}
+				if (!nonReapting) {
+					return "" + ch1[i];
 				}
 			}
-			if (counter < 1) {
-				return new String(ch1[i] + "");
-			}
 		}
-		return duplicates;
+		return null;
 	}
 
 	public static void main(String[] args) {
 		String str = "malayalam";
 		String firstNonRepChar = findFirstNonRepChar(str);
-		System.out.println("'" + firstNonRepChar + "' is the first non repeating char in the " + str);
+		if (firstNonRepChar != null) {
+			System.out.println("'" + firstNonRepChar + "' is the first non repeating char in the " + str);
+		} else {
+			System.out.println("string cannot be null or empty");
+		}
 	}
 
 }
