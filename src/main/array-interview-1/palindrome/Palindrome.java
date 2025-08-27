@@ -13,12 +13,15 @@ public class Palindrome {
 	}
 
 	public static void main(String[] args) {
-		String str = "malayalam";
-		if (isPalindrome(str)) {
-			System.out.println(str + " is palindrome");
-		} else {
-			System.out.println(str + " is not palindrome");
+		String[] strings = { "madam", "malayalam", "taher" };
+		for (String string : strings) {
+			if (isPalindrome(string)) {
+				System.out.println(string + " is palindrome");
+			} else {
+				System.out.println(string + " is not palindrome");
+			}
 		}
+
 	}
 
 }
