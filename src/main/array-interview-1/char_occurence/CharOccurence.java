@@ -4,23 +4,23 @@ import java.util.Arrays;
 
 public class CharOccurence {
 
-	public static String removeDupilcates(String str) {
-		char[] ch = str.toCharArray();
-		int writer = 1;
-		for (int reader = 1; reader < ch.length; reader++) {
-			boolean isDuplicate = false;
-			for (int i = 0; i < reader; i++) {
-				if (ch[i] == ch[reader]) {
-					isDuplicate = true;
-					break;
+	public static <T> int removeDupilcates(T[] str) {
+		if (str.length != 0) {
+			int writer = 1;
+			for (int reader = 1; reader < str.length; reader++) {
+				boolean isDuplicate = false;
+				for (int i = 0; i < reader; i++) {
+					if (str[reader].equals(str[i])) {
+						isDuplicate = true;
+					}
+				}
+				if (!isDuplicate) {
+					str[writer++] = str[reader];
 				}
 			}
-			if (!isDuplicate) {
-				ch[writer] = ch[reader];
-				writer++;
-			}
+			return writer;
 		}
-		return new String(Arrays.copyOfRange(ch, 0, writer));
+		return 0;
 	}
 
 	// alternative approach for removing duplicates occurences
@@ -38,57 +38,47 @@ public class CharOccurence {
 	}
 
 	public static void characterOccurrences(String str) {
-		if (str == null || str.isBlank()) {
-			System.out.println("string can not be null or empty");
-			return;
-		}
-		String unique = removeDupilcates1(str);
-		char[] ch1 = unique.toCharArray();
-		char[] ch2 = str.toCharArray();
-		for (int i = 0; i < ch1.length; i++) {
-			int counter = 0;
-			for (int j = 0; j < ch2.length; j++) {
-				if (ch1[i] == ch2[j]) {
-					counter++;
+		if (str != null && !str.isBlank()) {
+			String[] strArray = str.split("");
+			int newLength = removeDupilcates(strArray);
+			String[] ch1 = Arrays.copyOfRange(strArray, 0, newLength);
+			String[] ch2 = str.split("");
+			for (int i = 0; i < ch1.length; i++) {
+				int counter = 0;
+				for (int j = 0; j < ch2.length; j++) {
+					if (ch1[i].equals(ch2[j])) {
+						counter++;
+					}
 				}
+				System.out.println("char " + ch1[i] + " occurs " + counter + " times");
 			}
-			System.out.println("char " + ch1[i] + " occured " + counter + " time");
+		} else {
+			System.out.println("string can not be null or empty");
 		}
 	}
 
 	public static void stringOccurrence(String string) {
-		String[] words = string.split(" ");
-		int writer = 1;
-		for (int reader = 1; reader < words.length; reader++) {
-			boolean isDuplicate = false;
-			for (int i = 0; i < writer; i++) {
-				if (words[i].equals(words[reader])) {
-					isDuplicate = true;
-					break;
+		if (string != null && !string.isBlank()) {
+			String[] strings = string.split(" ");
+			int newLength = removeDupilcates(strings);
+			String[] uniqueWords = Arrays.copyOfRange(strings, 0, newLength);
+			String[] duplcaiteWords = string.split(" ");
+			for (int i = 0; i < uniqueWords.length; i++) {
+				int counter = 0;
+				for (int j = 0; j < duplcaiteWords.length; j++) {
+					if (uniqueWords[i].equals(duplcaiteWords[j])) {
+						counter++;
+					}
 				}
+				System.out.println("word '" + uniqueWords[i] + "' occurs " + counter + " times");
 			}
-			if (!isDuplicate) {
-				words[writer] = words[reader];
-				writer++;
-			}
-		}
-		String[] unique = Arrays.copyOfRange(words, 0, writer);
-		words = string.split(" ");
-		for (int i = 0; i < unique.length; i++) {
-			int count = 0;
-			for (int j = 0; j < words.length; j++) {
-				if (unique[i].equals(words[j])) {
-					count++;
-				}
-			}
-			System.out.println("word '" + unique[i] + "' occur " + count + " times");
 		}
 	}
 
 	public static void main(String[] args) {
-		characterOccurrences(null);
-		System.out.println("=============================");
-		String string = "this is chair and this is table";
+		characterOccurrences("malayalam");
+		System.out.println("===============================");
+		String string = "this is and this is chair";
 		stringOccurrence(string);
 	}
 }
