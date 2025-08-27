@@ -1,6 +1,8 @@
 package array_remove_duplicates;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class RemoveDuplicates {
 
@@ -16,6 +18,23 @@ public class RemoveDuplicates {
 			return writer;
 		}
 		return 0;
+	}
+
+	// alternative approach using boolean array this works for both sorted and
+	// unsorted array
+	public static int[] removeDuplicates1(int[] nums) {
+		if (nums.length != 0) {
+			boolean[] seen = new boolean[256];
+			List<Integer> list = new ArrayList<>();
+			for (int num : nums) {
+				if (!seen[num]) {
+					list.add(num);
+					seen[num] = true;
+				}
+			}
+			return list.stream().mapToInt(Integer::intValue).toArray();
+		}
+		return nums;
 	}
 
 	public static <T> int removeDuplicatesFromUnsortedArray(T[] nums) {
