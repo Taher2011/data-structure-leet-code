@@ -30,8 +30,8 @@ public class CharOccurence {
 		boolean[] seen = new boolean[256];
 		for (int i = 0; i < ch.length; i++) {
 			if (!seen[ch[i]]) {
-				seen[ch[i]] = true;
 				sb.append(ch[i]);
+				seen[ch[i]] = true;
 			}
 		}
 		return new String(sb);
