@@ -3,33 +3,35 @@ package find_duplicate;
 public class FindDuplicate {
 
 	public static String findDuplicates(String str) {
-		char[] ch = str.toCharArray();
-
-		boolean[] read = new boolean[256];
-		boolean[] write = new boolean[256];
-
-		StringBuilder sb = new StringBuilder();
-
-		for (int i = 0; i < ch.length; i++) {
-			if (!read[ch[i]]) {
-				read[ch[i]] = true;
-			} else {
-				if (!write[ch[i]]) {
-					sb.append(ch[i]);
-					write[ch[i]] = true;
+		if (str != null && !str.isBlank()) {
+			char[] ch = str.toCharArray();
+			boolean[] read = new boolean[256];
+			boolean[] write = new boolean[256];
+			StringBuilder builder = new StringBuilder();
+			for (char c : ch) {
+				if (read[c]) {
+					if (!write[c]) {
+						builder.append(c);
+						write[c] = true;
+					}
+				} else {
+					read[c] = true;
 				}
 			}
+			return builder.toString();
 		}
-		return new String(sb);
+		return null;
 	}
 
 	public static void main(String[] args) {
-		String str = "malayalam";
+		String str = "india";
 		String duplicates = findDuplicates(str);
-		if (duplicates.isEmpty()) {
-			System.out.println("No duplicates found in string '" + str + "'");
-		} else {
+		if (duplicates == null) {
+			System.out.println("string cannot be null");
+		} else if (!duplicates.isEmpty()) {
 			System.out.println("'" + duplicates + "' are duplicates in string '" + str + "'");
+		} else {
+			System.out.println("No duplicates found in string '" + str + "'");
 		}
 	}
 
