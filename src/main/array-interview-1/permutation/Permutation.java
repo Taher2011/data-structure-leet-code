@@ -45,7 +45,7 @@ public class Permutation {
 
 	public static void permute(char[] a, int index) {
 		if (index == a.length) {
-			System.out.println(new String(a));
+			System.out.println(a);
 			return;
 		}
 		for (int i = index; i < a.length; i++) {
@@ -66,10 +66,12 @@ public class Permutation {
 	}
 
 	public static void main(String[] args) {
-		String str = "GOD";
+		String str = "GODYI";
 		System.out.println("Permutations of " + str + ":");
+
 		permute(str.toCharArray(), 0);
 		System.out.println("===============================");
+
 		str = "AAB";
 		System.out.println("Permutations of " + str + ":");
 		permute(str.toCharArray(), 0);
