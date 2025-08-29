@@ -79,7 +79,14 @@ public class HeapSort {
 	public List<Integer> heapSort() {
 		List<Integer> sortedList = new ArrayList<>();
 		HeapSort tempHeap = new HeapSort();
-		tempHeap.heap = new ArrayList<>(heap);
+		// tempHeap.heap = new ArrayList<>(heap); // alternate can do this either
+		tempHeap.insert(1);
+		tempHeap.insert(10);
+		tempHeap.insert(2);
+		tempHeap.insert(11);
+		tempHeap.insert(4);
+		tempHeap.insert(5);
+		tempHeap.insert(3);
 		while (!tempHeap.heap.isEmpty()) {
 			sortedList.add(tempHeap.remove());
 		}
