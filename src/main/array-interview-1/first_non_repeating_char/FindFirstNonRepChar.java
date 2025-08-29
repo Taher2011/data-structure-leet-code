@@ -23,10 +23,27 @@ public class FindFirstNonRepChar {
 		return null;
 	}
 
+	public static String removeDuplicates(String str) {
+		if (str != null && !str.isBlank()) {
+			boolean[] seen = new boolean[256];
+			StringBuilder builder = new StringBuilder();
+			char[] ch = str.toCharArray();
+			for (char c : ch) {
+				if (!seen[c]) {
+					builder.append(c);
+					seen[c] = true;
+				}
+			}
+			return builder.toString();
+		}
+		return null;
+	}
+
 	public static String findFirstNonRepChar(String str) {
 		if (str != null && !str.trim().isBlank()) {
 			String duplicates = findDuplicates(str);
-			char[] ch1 = str.toCharArray();
+			String nonDuplicates = removeDuplicates(str);
+			char[] ch1 = nonDuplicates.toCharArray();
 			char[] ch2 = duplicates.toCharArray();
 			for (int i = 0; i < ch1.length; i++) {
 				boolean nonReapting = false;
