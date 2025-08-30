@@ -49,12 +49,22 @@ public class Stack<T> {
 	}
 
 	public static void main(String[] args) {
-		Stack<Integer> st = new Stack<>();
-		st.push(1);
-		st.push(2);
-		st.push(3);
-		st.getList();
-		System.out.println(st.pop());
-		st.getList();
+		Stack<Integer> st1 = new Stack<>();
+		st1.push(1);
+		st1.push(2);
+		st1.push(3);
+		st1.getList();
+		System.out.println(st1.pop());
+		st1.getList();
+
+		System.out.println("========================");
+
+		Stack<String> st2 = new Stack<>();
+		st2.push("A");
+		st2.push("B");
+		st2.push("C");
+		st2.getList();
+		System.out.println(st2.pop());
+		st2.getList();
 	}
 }
