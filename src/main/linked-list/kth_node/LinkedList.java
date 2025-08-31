@@ -251,7 +251,7 @@ public class LinkedList {
 		ll.append(3);
 		ll.append(4);
 		ll.append(5);
-		int k = 0;
+		int k = 4;
 		Node kthNode = ll.findKthFromEnd(k);
 		if (kthNode != null) {
 			System.out.println(k + "th node from end is " + kthNode.value);
