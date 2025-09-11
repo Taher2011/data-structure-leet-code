@@ -1,4 +1,4 @@
-package arrayList;
+package arrayList.array_list;
 
 public class ArrayList<T> {
 
