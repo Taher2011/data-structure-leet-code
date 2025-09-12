@@ -1,4 +1,4 @@
-package queue.test_push_pop_using_stack;
+package queue.test_enqueue_dequeue_using_stack;
 
 public class Queue {
 
