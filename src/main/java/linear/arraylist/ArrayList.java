@@ -1,4 +1,4 @@
-package linear.array_list;
+package linear.arraylist;
 
 public class ArrayList<T> {
 
