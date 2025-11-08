@@ -205,17 +205,19 @@ public class LinkedList {
 	}
 
 	public void bubbleSort() {
-		for (int i = length - 1; i >= 0; i--) {
+		Node sortedUpto = null;
+		while (sortedUpto != this.head.next) {
 			Node current = head;
-			while (current.next != null) {
+			while (current.next != sortedUpto) {
 				Node nextNode = current.next;
 				if (current.value > nextNode.value) {
-					int temp = current.value;
-					current.value = nextNode.value;
-					nextNode.value = temp;
+					int temp = nextNode.value;
+					nextNode.value = current.value;
+					current.value = temp;
 				}
 				current = current.next;
 			}
+			sortedUpto = current;
 		}
 		display();
 	}
