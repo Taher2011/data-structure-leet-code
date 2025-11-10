@@ -48,14 +48,21 @@ public class HashTable {
 	public void put(String key, int value) {
 		int index = hash(key);
 		Node node = new Node(key, value);
-		if (map[index] == null) {
+		Node temp = map[index];
+		if (temp == null) {
 			map[index] = node;
 		} else {
-			Node temp = map[index];
-			while (temp.next != null) {
+			while (temp != null) {
+				if (temp.key.equals(key)) {
+					temp.value = value;
+					return;
+				}
+				if (temp.next == null) {
+					temp.next = node;
+					return;
+				}
 				temp = temp.next;
 			}
-			temp.next = node;
 		}
 	}
 
@@ -94,6 +101,9 @@ public class HashTable {
 		hashTable.put("bolts", 200);
 		hashTable.put("screws", 140);
 
+		hashTable.put("nails", 200);
+		hashTable.put("lumber", 800);
+		hashTable.put("tile", 500);
 		hashTable.print();
 
 		System.out.println("keys : " + hashTable.getKeys());
