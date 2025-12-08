@@ -149,8 +149,9 @@ public class HashMapInterview {
 		System.out.println("====================================================================");
 
 		int[] nums3 = { 1, 2, 3, 4, 5 };
-		int target2 = 9;
-		System.out.println("sum of " + target + " is indices : " + Arrays.toString(subarraySum(nums3, target2)));
+		int sum = 9;
+		System.out
+				.println("sub-array sum of " + sum + " is from indices : " + Arrays.toString(subarraySum(nums3, sum)));
 
 	}
 
