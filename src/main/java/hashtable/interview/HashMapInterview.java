@@ -139,7 +139,7 @@ public class HashMapInterview {
 			if (hashMap.containsKey(complement)) {
 				return new int[] { hashMap.get(complement) + 1, i };
 			} else {
-				hashMap.put(nums[i], i);
+				hashMap.put(currentSum, i);
 			}
 		}
 		return new int[] {};
@@ -174,8 +174,8 @@ public class HashMapInterview {
 
 		System.out.println("====================================================================");
 
-		int[] nums3 = { 1, 2, 3, 4, 5 };
-		int sum = 9;
+		int[] nums3 = { 4, 2, 5, 7, 9 };
+		int sum = 21;
 		System.out
 				.println("sub-array sum of " + sum + " is from indices : " + Arrays.toString(subarraySum(nums3, sum)));
 
