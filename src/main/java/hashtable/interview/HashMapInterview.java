@@ -82,6 +82,32 @@ public class HashMapInterview {
 		return anagrams;
 	}
 
+	// Second approach using computeIfAbsent
+	public static List<List<String>> groupAnagrams1(String[] strings) {
+		List<List<String>> list = new ArrayList<>();
+		Map<String, List<String>> map = new HashMap<>();
+		for (String string : strings) {
+			char[] ch = string.toCharArray();
+			Arrays.sort(ch);
+			String canonical = new String(ch);
+
+//	computeIfAbsent -->		If key present in map → use its value
+//	computeIfAbsent -->		If key not present in map → create new value, put into map, then use its value
+
+//			Equivalent old-style code
+			/*
+			 * if (!map.containsKey(canonical)) { map.put(canonical, new ArrayList<>()); }
+			 * map.get(canonical).add(string);
+			 */
+
+			map.computeIfAbsent(canonical, l -> new ArrayList<>()).add(string);
+		}
+		for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+			list.add(entry.getValue());
+		}
+		return list;
+	}
+
 	private static List<String> addToList(List<String> list, String string) {
 		list.add(string);
 		return list;
