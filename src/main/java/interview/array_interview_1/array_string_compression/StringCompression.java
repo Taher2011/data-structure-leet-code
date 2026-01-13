@@ -1,4 +1,4 @@
-package interview.array_interview_1.string_compression;
+package interview.array_interview_1.array_string_compression;
 
 public class StringCompression {
 
