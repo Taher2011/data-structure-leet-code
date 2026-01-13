@@ -23,8 +23,8 @@ public class Anagram {
 			sort(ch1);
 			sort(ch2);
 
-			for (int i = 0, j = 0; i < ch1.length; i++, j++) {
-				if (ch1[i] != ch2[j]) {
+			for (int i = 0; i < ch1.length; i++) {
+				if (ch1[i] != ch2[i]) {
 					return false;
 				}
 			}
